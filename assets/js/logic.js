@@ -94,14 +94,20 @@ function assessUserAnswer(selectedChoiceIndex) {
     }
 }
 
+/**
+ * Ends the quiz and displays the final score.
+ */
+function endQuiz() {
+    clearInterval(countdownTimer);
+    document.getElementById("questions").classList.add("hide");
+    endScreen.classList.remove("hide");
+    finalScoreDisplay.textContent = userScore;
+}
+
 function recordUserScore() {
     
 }
 
 function updateTimer() {
-    
-}
-
-function endQuiz() {
     
 }

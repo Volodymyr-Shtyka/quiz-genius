@@ -62,6 +62,38 @@ function handleChoiceSelection(event) {
     }
 }
 
+/**
+ * Checks the selected answer and updates the score and feedback.
+ * @param {number} selectedChoiceIndex - The index of the selected answer.
+ */
+function assessUserAnswer(selectedChoiceIndex) {
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (selectedChoiceIndex === currentQuestion.choices.indexOf(currentQuestion.answer)) {
+        userScore += 10;
+        feedbackMessage.innerText = "Correct!";
+    } else {
+        timeLeft -= 10;
+        feedbackMessage.innerText = "Wrong!";
+    }
+
+    // Display the feedback message
+    feedbackMessage.classList.remove("hide");
+
+    // Set a timeout to hide the feedback message after 1 second
+    setTimeout(function () {
+        feedbackMessage.classList.add("hide");
+    }, 1000); // 1000 milliseconds = 1 second
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+        displayCurrentQuestion();
+    } else {
+        endQuiz();
+    }
+}
+
 function recordUserScore() {
     
 }
@@ -70,6 +102,6 @@ function updateTimer() {
     
 }
 
-function assessUserAnswer(selectedChoiceIndex) {
-
+function endQuiz() {
+    
 }

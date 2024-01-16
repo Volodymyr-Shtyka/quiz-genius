@@ -122,6 +122,18 @@ function updateTimer() {
     timerDisplay.textContent = timeLeft;
 }
 
+/**
+ * Saves the user's score and redirects to the highscores page.
+ */
 function recordUserScore() {
+    const userInitials = initialsInput.value.trim();
 
+    if (userInitials !== "") {
+        const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+        highscores.push({initials: userInitials, score: userScore});
+        localStorage.setItem("highscores", JSON.stringify(highscores));
+        window.location.href = "highscores.html";
+    } else {
+        alert("Please enter your initials.");
+    }
 }

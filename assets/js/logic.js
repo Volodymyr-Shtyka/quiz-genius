@@ -34,6 +34,23 @@ function beginQuiz() {
     displayCurrentQuestion();
 }
 
+/**
+ * Displays the current question.
+ */
+function displayCurrentQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionTitle.textContent = currentQuestion.title;
+    choicesContainer.innerHTML = "";
+
+    // Create buttons for each choice
+    currentQuestion.choices.forEach((choice, index) => {
+        const choiceButton = document.createElement("button");
+        choiceButton.textContent = choice;
+        choiceButton.setAttribute("data-index", index);
+        choicesContainer.appendChild(choiceButton);
+    });
+}
+
 function handleChoiceSelection() {
     
 }
@@ -43,9 +60,5 @@ function recordUserScore() {
 }
 
 function updateTimer() {
-    
-}
-
-function displayCurrentQuestion() {
     
 }

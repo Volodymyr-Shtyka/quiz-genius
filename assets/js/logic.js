@@ -104,10 +104,24 @@ function endQuiz() {
     finalScoreDisplay.textContent = userScore;
 }
 
-function recordUserScore() {
-    
+/**
+ * Updates the timer, ensures time is not negative, and ends the quiz if needed.
+ */
+function updateTimer() {
+    timeLeft--;
+
+    // Ensure time is not negative
+    if (timeLeft < 0) {
+        timeLeft = 0;
+    }
+
+    if (timeLeft === 0 || currentQuestionIndex >= questions.length) {
+        endQuiz();
+    }
+
+    timerDisplay.textContent = timeLeft;
 }
 
-function updateTimer() {
-    
+function recordUserScore() {
+
 }

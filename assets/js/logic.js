@@ -51,8 +51,15 @@ function displayCurrentQuestion() {
     });
 }
 
-function handleChoiceSelection() {
-    
+/**
+ * Handles the click event on choices.
+ * @param {Event} event - The click event.
+ */
+function handleChoiceSelection(event) {
+    if (event.target.matches("button")) {
+        const selectedChoiceIndex = parseInt(event.target.getAttribute("data-index"));
+        assessUserAnswer(selectedChoiceIndex);
+    }
 }
 
 function recordUserScore() {
@@ -61,4 +68,8 @@ function recordUserScore() {
 
 function updateTimer() {
     
+}
+
+function assessUserAnswer(selectedChoiceIndex) {
+
 }

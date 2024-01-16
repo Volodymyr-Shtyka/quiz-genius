@@ -1,5 +1,17 @@
 // DOM Elements
 const highscoresList = document.getElementById("highscores");
+const clearBtn = document.getElementById("clear");
+
+// Event listener for Clear Highscores button
+clearBtn.addEventListener("click", handleClearHighscores);
+
+/**
+ * Handles the click event on the Clear Highscores button.
+ */
+function handleClearHighscores() {
+    localStorage.removeItem("highscores");
+    updateHighscores();
+}
 
 /**
  * Updates and renders the highscores.

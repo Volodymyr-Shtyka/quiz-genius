@@ -24,8 +24,14 @@ choicesContainer.addEventListener("click", handleChoiceSelection);
 // Event listener for the submit button
 submitButton.addEventListener("click", recordUserScore);
 
+/**
+ * Initiates the quiz when the start button is clicked.
+ */
 function beginQuiz() {
-    
+    startButton.parentElement.classList.add("hide");
+    document.getElementById("questions").classList.remove("hide");
+    countdownTimer = setInterval(updateTimer, 1000);
+    displayCurrentQuestion();
 }
 
 function handleChoiceSelection() {
@@ -33,5 +39,13 @@ function handleChoiceSelection() {
 }
 
 function recordUserScore() {
+    
+}
+
+function updateTimer() {
+    
+}
+
+function displayCurrentQuestion() {
     
 }

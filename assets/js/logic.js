@@ -24,14 +24,52 @@ choicesContainer.addEventListener("click", handleChoiceSelection);
 // Event listener for the submit button
 submitButton.addEventListener("click", recordUserScore);
 
+/**
+ * Initiates the quiz when the start button is clicked.
+ */
 function beginQuiz() {
-    
+    startButton.parentElement.classList.add("hide");
+    document.getElementById("questions").classList.remove("hide");
+    countdownTimer = setInterval(updateTimer, 1000);
+    displayCurrentQuestion();
 }
 
-function handleChoiceSelection() {
-    
+/**
+ * Displays the current question.
+ */
+function displayCurrentQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionTitle.textContent = currentQuestion.title;
+    choicesContainer.innerHTML = "";
+
+    // Create buttons for each choice
+    currentQuestion.choices.forEach((choice, index) => {
+        const choiceButton = document.createElement("button");
+        choiceButton.textContent = choice;
+        choiceButton.setAttribute("data-index", index);
+        choicesContainer.appendChild(choiceButton);
+    });
+}
+
+/**
+ * Handles the click event on choices.
+ * @param {Event} event - The click event.
+ */
+function handleChoiceSelection(event) {
+    if (event.target.matches("button")) {
+        const selectedChoiceIndex = parseInt(event.target.getAttribute("data-index"));
+        assessUserAnswer(selectedChoiceIndex);
+    }
 }
 
 function recordUserScore() {
     
+}
+
+function updateTimer() {
+    
+}
+
+function assessUserAnswer(selectedChoiceIndex) {
+
 }

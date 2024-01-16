@@ -9,8 +9,19 @@ function updateHighscores() {
     sortAndRenderHighscores(highscores);
 }
 
+/**
+ * Sorts and renders the highscores list.
+ * @param {Array} highscores - The array containing highscore objects.
+ */
 function sortAndRenderHighscores(highscores) {
-    console.log(highscores);
+    highscores.sort((a, b) => b.score - a.score);
+    highscoresList.innerHTML = "";
+
+    highscores.forEach((score, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${score.initials} - ${score.score}`;
+        highscoresList.appendChild(listItem);
+    });
 }
 
 // Initially render highscores when the page loads
